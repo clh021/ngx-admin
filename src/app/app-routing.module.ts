@@ -10,6 +10,7 @@ import {
 } from '@nebular/auth';
 
 const routes: Routes = [
+  { path: 'dashboard', loadChildren: 'app/dashboard/dashboard.module#DashboardModule' },
   { path: 'pages', loadChildren: 'app/pages/pages.module#PagesModule' },
   {
     path: 'auth',
