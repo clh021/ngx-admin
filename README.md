@@ -20,6 +20,7 @@ ng g m statistics --routing #统计
 ng g m system --routing #系统
 ```
 ## 搭建路由
+### 常规应用
 ```typescript
 #先从app根路由[Routes类型的routes常量]中配置想要链入的模块
 #从源代码
@@ -48,5 +49,34 @@ const routes: Routes = [{
 # 以上修改则链好了一个  /dashboard 的路由地址
 ```
 > 请通过编辑器自动导入需要引用的组件，尽可能不手动import，能少给自己挖坑，节省时间精力
+### 子路由
+```shell
+ng g c dashboard/test --routing #主面板测试组件
+```
+```typescript
+const routes: Routes = [{
+  path: '',
+  // component: MainComponent,
+  children: [
+    {
+      path: 'main',
+      component: MainComponent,
+    },
+    {
+      path: 'test',
+      component: TestComponent,
+      // loadChildren: MainComponent, //错误的写法，loadChildren只适用于异步加载模块而非组件
+    },
+    {
+      path: '',
+      redirectTo: 'main',
+      pathMatch: 'full',
+    }
+  ]
+}];
+```
+> 注意：当开头注释的 component 被取消注释，则下面的 children 将失效[试验结果]
+> ？待讨论？反例见pages-routing.modules.ts路由配置
+
 
 
