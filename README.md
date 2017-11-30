@@ -53,6 +53,7 @@ const routes: Routes = [{
 ```shell
 ng g c dashboard/test --routing #主面板测试组件
 ```
+/src/app/dashboard/dashboard-routing.module.ts
 ```typescript
 const routes: Routes = [{
   path: '',
