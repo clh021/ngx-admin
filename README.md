@@ -21,33 +21,36 @@ ng g m system --routing #系统
 ```
 ## 搭建路由
 ### 常规应用
+先从app根路由[Routes类型的routes常量]中配置想要链入的模块
+从源代码
 ```typescript
-#先从app根路由[Routes类型的routes常量]中配置想要链入的模块
-#从源代码
-# ......
+......
 const routes: Routes = [
   { path: 'pages', loadChildren: 'app/pages/pages.module#PagesModule' },
-# ......
-#修改为
-# ......
+......
+```
+修改为
+```typescript
+......
 const routes: Routes = [
   { path: 'dashboard', loadChildren: 'app/dashboard/dashboard.module#DashboardModule' },
   { path: 'pages', loadChildren: 'app/pages/pages.module#PagesModule' },
-# ......
-#然后还需要建立好我们自己模块的路由指定路由显示的组件
-#从源代码
-# ......
+......
+```
+然后还需要建立好我们自己模块的路由指定路由显示的组件
+从源代码
+```typescript
 const routes: Routes = [];
-# ......
+```
 #修改为
-# ......
+```typescript
 const routes: Routes = [{
   path: '',
   component: MainComponent
 }];
-# ......
-# 以上修改则链好了一个  /dashboard 的路由地址
 ```
+以上修改则链好了一个  /dashboard 的路由地址
+
 > 请通过编辑器自动导入需要引用的组件，尽可能不手动import，能少给自己挖坑，节省时间精力
 ### 子路由
 ```shell
@@ -94,7 +97,7 @@ ng g c pages/test/table --routing
 
 ### 建立路由与菜单
 在 app/pages/pages-menu.ts 上添加自己的菜单
-```json
+```
   {
     title: 'CRUD测试',
     icon: 'nb-compose',
@@ -112,7 +115,7 @@ ng g c pages/test/table --routing
 ```
 这时应该就可以在页面中看到你的菜单了，但是这里只是链接，点了没效果，因为还没有建立路由，下面建立路由
 在 app/pages/pages-routing.module.ts 中添加我们的模块并定义路由前缀
-```json
+```
 {
   path: 'test',
   loadChildren: './test/test.module#TestModule',
@@ -120,7 +123,7 @@ ng g c pages/test/table --routing
 ```
 然后设置我们自己test模块的路由配置
 /src/app/pages/test/test-routing.module.ts
-```json
+```
 {
   path: '',
   component: TestComponent,
