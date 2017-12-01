@@ -8,9 +8,23 @@ export const MENU_ITEMS: NbMenuItem[] = [
     home: true,
   },
   {
-    title: 'FEATURES',
-    group: true,
+    title: 'CRUD测试',
+    icon: 'nb-compose',
+    children: [
+      {
+        title: '表单测试',
+        link: '/pages/test/form',
+      },
+      {
+        title: '列表测试',
+        link: '/pages/test/table',
+      },
+    ],
   },
+  // {
+  //   title: 'FEATURES',
+  //   group: true,
+  // },
   {
     title: 'UI Features',
     icon: 'nb-keypad',

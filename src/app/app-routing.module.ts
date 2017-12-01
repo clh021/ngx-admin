@@ -10,7 +10,7 @@ import {
 } from '@nebular/auth';
 
 const routes: Routes = [
-  { path: 'dashboard', loadChildren: 'app/dashboard/dashboard.module#DashboardModule' },
+  // { path: 'dashboard', loadChildren: 'app/dashboard/dashboard.module#DashboardModule' },
   { path: 'pages', loadChildren: 'app/pages/pages.module#PagesModule' },
   {
     path: 'auth',
@@ -42,8 +42,8 @@ const routes: Routes = [
       },
     ],
   },
-  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-  { path: '**', redirectTo: 'dashboard' },
+  { path: '', redirectTo: 'pages/test', pathMatch: 'full' },
+  { path: '**', redirectTo: 'pages' },
 ];
 
 const config: ExtraOptions = {

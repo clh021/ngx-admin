@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { MainComponent } from './main/main.component';
 import { TestComponent } from './test/test.component';
+// import { StatusCardComponent } from './status-card/status-card.component';
 // import { MenusComponent } from './menus.component';
 
 const routes: Routes = [{
@@ -30,5 +31,7 @@ const routes: Routes = [{
 })
 export class DashboardRoutingModule { }
 export const routedComponents=[
-  MainComponent
+  MainComponent,
+  TestComponent,
+  // StatusCardComponent
 ];
