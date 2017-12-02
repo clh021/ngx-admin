@@ -4,18 +4,18 @@
       <nb-card-header>CRUD 表单测试</nb-card-header>
       <nb-card-body>
         <div class="input-group">
-          <input type="text" placeholder="用户ID" id="user_id" class="form-control"/>
+          <input type="text" placeholder="用户ID" id="user_id" class="form-control" [(ngModel)]="user_id" />
         </div>
         <div class="input-group">
-          <input type="text" placeholder="业务编号" id="category_id" class="form-control"/>
+          <input type="text" placeholder="业务编号" id="category_id" class="form-control" [(ngModel)]="category_id" />
         </div>
         <div class="input-group">
-          <textarea rows="5" placeholder="业务备注" id="content" class="form-control"></textarea>
+          <textarea rows="5" placeholder="业务备注" id="content" class="form-control" [(ngModel)]="content" ></textarea>
         </div>
 
         <div class="size-container">
           <div>
-            <button class="btn btn-primary btn-lg">创建业务记录</button>
+            <button class="btn btn-primary btn-lg" (click)="onSubmit()">创建业务记录</button>
           </div>
         </div>
 

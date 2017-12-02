@@ -326,3 +326,54 @@ import {ThemeModule} from "../../@theme/theme.module";
 import {SmartTableService} from "../../@core/data/smart-table.service";
 ```
 > 你还记得 routedComponents 是从哪里引入的吗？
+
+### 编写增加数据的操作(Create)
+首先，给我们需要的表单字段绑定字段到组件变量
+如：user_id字段，应该将该行代码
+```angular2html
+<input type="text" placeholder="用户ID" id="user_id" class="form-control"/>
+```
+改成
+```angular2html
+<input type="text" placeholder="用户ID" id="user_id" class="form-control" [(ngModel)]="user_id" />
+```
+同理，使用 `[(ngModel)]="category_id" `,`[(ngModel)]="content" `来绑定类型id和内容字段
+最后，添加好点击按钮，绑定好事件
+```angular2html
+<button class="btn btn-primary btn-lg" (click)="onSubmit()">创建业务记录</button>
+```
+到这里，模板内容完成，可以去编写组件控制层了
+在组件中声明好内部变量，也就是刚刚绑定的那几个。
+然后还要声明好事件，也就是刚刚那个按钮绑定的事件。
+
+最后的 `FormComponent` 看起来应该是这样的。
+```angularjs
+export class FormComponent implements OnInit {
+  user_id = '5';
+  category_id = '3';
+  content = '易驹所二手车重构';//这里是设置的默认值，你也可以设置空的默认值，或者不设置。
+  private test_url = 'http://api.host/posts';//定义的发送请求的url地址，也叫接口地址
+  constructor(private http: Http) { }
+  // constructor(private http: HttpClient) { }//会多发一次OPTIONI链接
+
+  ngOnInit() {
+  }
+
+  onSubmit(): void{
+    this.http.post(this.test_url,{user_id:this.user_id, category_id:this.category_id, content:this.content})//两种都可以
+    // this.http.post(this.test_url,JSON.stringify({user_id:this.user_id, category_id:this.category_id, content:this.content}))//两种都可以
+      .map(res => {
+        console.log(res);
+    }).subscribe();
+
+    // 这里是请求接口拿一次列表数据，可以看看我们刚才创建的数据是否真实到数据库了
+    // this.http.get(this.test_url).map(res => {
+    //   console.log(res);
+    // }).subscribe();
+  }
+}
+```
+上例代码中，你可能注意到了存在一个注释了的 `constructor` 构建函数，它和没有注释的函数的区别是引用了不同的http组件库。
+注释已经说到，使用 `HttpClient` 会在发送post请求之前会先发送一次 OPTION 请求。但是两种都能正常的达到我们post数据的目的。
+
+好了，你可以测试一下来创建数据了
