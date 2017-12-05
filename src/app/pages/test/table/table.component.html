@@ -3,8 +3,26 @@
     <nb-card>
       <nb-card-header>CRUD 列表测试</nb-card-header>
       <nb-card-body>
-        <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)">
-        </ng2-smart-table>
+        <table class="table text-center">
+          <thead></thead>
+          <tr>
+            <th scope="col">编号</th>
+            <th scope="col">类型编号</th>
+            <th scope="col">用户编号</th>
+            <th scope="col">内容</th>
+            <th scope="col">操作</th>
+          </tr>
+          <tr *ngFor="let p of posts" class="ng2-smart-row">
+            <th scope="row">{{p.id}}</th>
+            <td>{{p.category_id}}</td>
+            <td>{{p.user_id}}</td>
+            <td>{{p.content}}</td>
+            <td>
+              <button class="btn btn-primary btn-tn" (click)="delete(RecordModel)">删除</button>
+              <button class="btn btn-primary btn-tn" (click)="edit(RecordModel)">编辑</button>
+            </td>
+          </tr>
+        </table>
       </nb-card-body>
     </nb-card>
   </div>

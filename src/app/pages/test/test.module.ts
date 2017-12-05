@@ -4,7 +4,8 @@ import { Ng2SmartTableModule } from 'ng2-smart-table';
 
 import {routedComponents, TestRoutingModule} from './test-routing.module';
 import {ThemeModule} from "../../@theme/theme.module";
-import {SmartTableService} from "../../@core/data/smart-table.service";
+import {TableService} from "./table/table.service";
+import {RecordModel, TableDefaultModel} from "./table/table.model";
 
 @NgModule({
   imports: [
@@ -17,7 +18,9 @@ import {SmartTableService} from "../../@core/data/smart-table.service";
     ...routedComponents,
   ],
   providers: [
-    SmartTableService,
+    TableService,
+    TableDefaultModel,
+    RecordModel,
   ],
 })
 export class TestModule { }

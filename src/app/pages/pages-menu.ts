@@ -8,6 +8,20 @@ export const MENU_ITEMS: NbMenuItem[] = [
     home: true,
   },
   {
+    title: '业务',
+    icon: 'nb-layout-sidebar-left',
+    children: [
+      {
+        title: '预审业务',
+        link: '/pages/bussiness/prejudication',
+      },
+      {
+        title: '过户业务',
+        link: '/pages/bussiness/transfer',
+      },
+    ],
+  },
+  {
     title: 'CRUD测试',
     icon: 'nb-compose',
     children: [
