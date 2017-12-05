@@ -1,0 +1,18 @@
+<nb-card size="xlarge">
+  <nb-card-header>
+    <div class="cameras-card-header">
+      <span class="cameras-card-title">预审业务</span>
+    </div>
+  </nb-card-header>
+  <nb-card-body>
+    <div class="cameras" *ngIf="!isSingleView">
+      <div class="camera col-sm-6" *ngFor="let camera of cameras" [style.background-image]="'url(' + camera.source + ')'"
+           (click)="selectCamera(camera)">
+        <span>{{ camera.title }}</span>
+      </div>
+      <ul>
+        <li>图片要换，关键词：录入,审核</li>
+      </ul>
+    </div>
+  </nb-card-body>
+</nb-card>
